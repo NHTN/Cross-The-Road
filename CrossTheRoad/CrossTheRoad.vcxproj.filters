@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Screen">
+      <UniqueIdentifier>{894d1c57-28c6-40eb-8a83-e35e0cf94c6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Car">
+      <UniqueIdentifier>{20069945-4a15-47f0-88b2-c8a192b50a7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{83859c42-ce96-4c1d-9b4b-d88e07a91a10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Data">
+      <UniqueIdentifier>{67b6f62d-d943-4451-8d5d-e32776faacfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Player">
+      <UniqueIdentifier>{8b174317-7e88-4674-9022-16d7fadcc6d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Hospital">
+      <UniqueIdentifier>{4f8247d2-6807-474b-9d07-481a6adf5ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Ambulance">
+      <UniqueIdentifier>{42089179-8751-4fc2-951e-b3ea78ca0fef}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Screen.cpp">
+      <Filter>Header Files\Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="Car.cpp">
+      <Filter>Header Files\Car</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Header Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Data.cpp">
+      <Filter>Header Files\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Header Files\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Hospital.cpp">
+      <Filter>Header Files\Hospital</Filter>
+    </ClCompile>
+    <ClCompile Include="Ambulance.cpp">
+      <Filter>Header Files\Ambulance</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Screen.h">
+      <Filter>Header Files\Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="Car.h">
+      <Filter>Header Files\Car</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>Header Files\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Hospital.h">
+      <Filter>Header Files\Hospital</Filter>
+    </ClInclude>
+    <ClInclude Include="Ambulance.h">
+      <Filter>Header Files\Ambulance</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
