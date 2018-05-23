@@ -51,9 +51,9 @@ void EraserAmbulance(int x, int y)
 	}
 }
 
-
 void AccidentProcess(POINT**& Car, POINT& Player, POINT CarInEnd[], int mCarInEnd, Ambulance& Z)
 {
+	Beep(659, 500);
 	PlaySoundA("sound.wav", NULL, SND_ASYNC);
 	for (int i = 4; i < MaxCar; i++)
 	{

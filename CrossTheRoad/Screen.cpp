@@ -121,14 +121,19 @@ Status key(int z)
 	{
 		char c;
 		c = _getch();
+		Beep(300, 500);
 		if (c == 72) return Up;
 		if (c == 80) return Down;
 		if (c == 77) return Right;
 		if (c == 75) return Left;
 	}
 	else
-		if (z == 13) return Enter;
-}
+		if (z == 13)
+		{
+			Beep(500, 500);
+			return Enter;
+		}
+}	
 
 int MeNu()
 {
@@ -153,6 +158,7 @@ int MeNu()
 			cout << A[i] << endl;
 		}
 		int z = _getch();
+		
 		Status stt = key(z);
 		switch (stt)
 		{
