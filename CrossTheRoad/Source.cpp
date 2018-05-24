@@ -1,4 +1,4 @@
-#pragma comment (lib, "winmm.lib")
+﻿#pragma comment (lib, "winmm.lib")
 #include <iostream>
 #include <Windows.h>
 #include <conio.h>
@@ -13,46 +13,42 @@
 #include "Player.h"
 #include "Ambulance.h"
 
-#define PauseTime 3
-#define MAX_SPEED 3
-#define MaxCar 17
-#define CarLength 10
+#define PauseTime 3 // Khoảng thời gian tạm dừng của xe
+#define MAX_SPEED 3 // Tốc độ tối đa
+#define MaxCar 17 // Số lượng xe
+#define CarLength 10 // Chiều dài xe
 
 using namespace std;
 
-thread t1;
+thread t1; 
 HANDLE AdGame, AdGameNd;
 
 
-POINT** Car; 
-POINT Player;
-POINT CarInEnd[1000];
-int pause = 0;
-int Move;
-int temp;
-int Speed = 1; 
-int mCarInEnd = 0;
-Ambulance Z;
-bool Alive; 
+POINT** Car;  // Xe
+POINT Player; // Người chơi
+POINT CarInEnd[1000]; // Người chơi về đích
+int pause = 0; // Biến quản lí tạm dừng game
+int Move; // Biến quản lí phím nhấn nhập vào
+int temp; 
+int Speed = 1; // Biến quản lí tốc độ 
+int mCarInEnd = 0; // Số lượng người chơi đã về đích
+Ambulance Z; // Xe cứu thương
+bool Alive;  // Biến quản lí trạng thái sống hay chết
 
-
+// Tiểu trình game
 void SubThread()
 {
 	int Count = 0;
-	gotoXY(0, 0);
+	
 	while (1)
 	{
 		if (Alive)
 		{
 			Count++;
-			gotoXY(25, 1);
-			cout << "ROUND : " << Speed << endl;
-
+		
 			DrawCarInEnd(CarInEnd, mCarInEnd);
 			Menu();
-			MovePlayer(Move, Player);
-
-			
+			MovePlayer(Move, Player);	
 			
 			if (Count % PauseTime == 0)
 			{
@@ -79,6 +75,7 @@ void SubThread()
 	}
 }
 
+// Sao chép nhân đôi tiểu trình sang tiểu trình khác
 void DuplicateThread(HANDLE& AdGame, HANDLE& AdGameNd)
 {
 	t1 = thread(SubThread);
@@ -87,6 +84,7 @@ void DuplicateThread(HANDLE& AdGame, HANDLE& AdGameNd)
 	t1.detach();
 }
 
+// Lựa chọn menu đầu vào *Yêu cầu 5
 void Select(HANDLE& AdGameNd)
 {
 	int select = MeNu();
@@ -105,6 +103,8 @@ void Select(HANDLE& AdGameNd)
 			gotoXY(0, 0);
 			system("cls");
 			LoadFileProcess(Car, Player, Speed, Alive, CarInEnd, mCarInEnd);
+			
+			system("cls");
 			gotoXY(0, 0);
 			DrawBoard();
 			ResumeThread(AdGameNd);
@@ -120,15 +120,16 @@ void Select(HANDLE& AdGameNd)
 
 void main()
 {
-	FixConsoleWindow();
-	CursorStatus(1, FALSE);
+	FixConsoleWindow(); // Mặc định kích thước cửa sổ console
+	CursorStatus(1, FALSE); // Ẩn con trỏ chuột
 	
-	srand((int)time(0));
+	srand((int)time(0)); // Random
 
 	DuplicateThread(AdGame, AdGameNd);
 
 	Select(AdGameNd);
-	if (temp == 'Z') return;
+	if (temp == 'Z') return; // Nếu chọn Exit thì thoát
+
 	while (1)
 	{
 		temp = _getch();

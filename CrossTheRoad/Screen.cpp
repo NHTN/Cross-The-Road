@@ -1,8 +1,9 @@
-#include <Windows.h>
+﻿#include <Windows.h>
 #include <iostream>
 #include "Screen.h"
 #include <string>
 #include <conio.h>
+
 #define HeighConsole 24
 #define WidthConsole 60
 #define MauNen 11
@@ -10,9 +11,9 @@
 
 using namespace std;
 
-
 enum Status { Up, Down, Left, Right, Enter };
 
+// Mặc định kích thước cửa sổ console
 void FixConsoleWindow()
 {
 	HWND consoleWindow = GetConsoleWindow();
@@ -21,6 +22,7 @@ void FixConsoleWindow()
 	SetWindowLong(consoleWindow, GWL_STYLE, style);
 }
 
+// Di chuyển con trỏ chuột đến vị trí (X, Y)
 void gotoXY(int x, int y)
 {
 	COORD coord;
@@ -29,6 +31,7 @@ void gotoXY(int x, int y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
+// Ẩn con trỏ chuột nhấp nháy
 void CursorStatus(DWORD Size, BOOL visible)
 {
 	CONSOLE_CURSOR_INFO cci;
@@ -37,6 +40,7 @@ void CursorStatus(DWORD Size, BOOL visible)
 	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cci);
 }
 
+// Vẽ khung màn hình 
 void DrawBoard()
 {
 	char s = (char) 219;
@@ -54,6 +58,7 @@ void DrawBoard()
 	gotoXY(0, 0);
 }
 
+// Quản lí menu lựa chọn
 void Menu()
 {
 	gotoXY(63, 10);
@@ -121,7 +126,7 @@ Status key(int z)
 	{
 		char c;
 		c = _getch();
-		Beep(300, 500);
+		Beep(900, 200);
 		if (c == 72) return Up;
 		if (c == 80) return Down;
 		if (c == 77) return Right;

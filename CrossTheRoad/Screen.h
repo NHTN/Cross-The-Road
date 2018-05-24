@@ -1,5 +1,5 @@
 #pragma once
-#include <string>
+#include "Screen.h"
 #include <Windows.h>
 
 void FixConsoleWindow();

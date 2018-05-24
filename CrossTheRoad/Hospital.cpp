@@ -1,10 +1,11 @@
-#include <Windows.h>
+﻿#include <Windows.h>
 #include <stdio.h>
 #include "Screen.h"
 #include <iostream>
 
 using namespace std;
 
+// Khởi tạo trạm y tế
 void Hospital(int x, int y)
 {
 	char p[3][5];

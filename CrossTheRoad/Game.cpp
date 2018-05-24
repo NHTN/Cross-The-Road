@@ -1,4 +1,4 @@
-#include <Windows.h>
+﻿#include <Windows.h>
 #include <iostream>
 #include <fstream>
 #include "Data.h"
@@ -6,14 +6,14 @@
 #include "Data.h"
 #include "Player.h"
 
-#define HeighConsole 24
+#define HeighConsole 24 
 #define WidthConsole 60
 #define CarLength 10
 #define MaxCar 17
 
-
 using namespace std;
 
+// Bắt đầu 
 void StartGame(bool& Alive, int& Move, int& Speed, POINT& Y, POINT**& X, POINT Z[], int& m)
 {
 	system("cls");
@@ -22,6 +22,7 @@ void StartGame(bool& Alive, int& Move, int& Speed, POINT& Y, POINT**& X, POINT Z
 	Alive = 1;
 }
 
+// Thoát game
 void ExitGame(HANDLE t, POINT**& X)
 {
 	system("cls");
@@ -29,11 +30,13 @@ void ExitGame(HANDLE t, POINT**& X)
 	CollectData(X);
 }
 
+// Tạm dừng game
 void PauseGame(HANDLE t)
 {
 	SuspendThread(t);
 }
 
+// Chết
 void ProcessDead(bool& Alive)
 {
 	Alive = 0;
@@ -41,8 +44,7 @@ void ProcessDead(bool& Alive)
 	cout << "Dead, Pres Y to Continue or Anykey to Exit!";
 }
 
-
-
+// Kiểm tra va chạm xe
 bool IsImpact(POINT& p, int d, POINT**& X, POINT Z[], int m)
 {
 	for (int i = 0; i < m; i++)
@@ -62,7 +64,7 @@ bool IsImpact(POINT& p, int d, POINT**& X, POINT Z[], int m)
 	return false;
 }
 
-
+// Kết thúc
 void ProcessFinish(POINT& p, int& Speed, int& Move, POINT Z[], int& m)
 {
 	Speed += (Speed == 3) ? (-2) : 1;
@@ -73,6 +75,7 @@ void ProcessFinish(POINT& p, int& Speed, int& Move, POINT Z[], int& m)
 	Move = 'D';
 }
 
+// Lưu file
 void SaveFile(const char* file, POINT** X, POINT& Y, int Speed, bool Alive, POINT Z[], int m)
 {
 	ofstream fo(file, ios::out| ios::binary);
@@ -97,6 +100,7 @@ void SaveFile(const char* file, POINT** X, POINT& Y, int Speed, bool Alive, POIN
 	fo.close();
 }
 
+// Load file
 void LoadFile(const char* file, POINT**& X, POINT &Y, POINT Z[], int &Speed, bool& Alive, int& m)
 {
 	ifstream fi(file, ios::in|ios::binary);
@@ -105,7 +109,15 @@ void LoadFile(const char* file, POINT**& X, POINT &Y, POINT Z[], int &Speed, boo
 		cout << "Cannot open file ";
 		return;
 	}
-
+	else
+	{
+		gotoXY(15, 3);
+		Beep(800, 300);
+		cout << "Your file is loading successful !" << endl;
+		Sleep(500);
+		gotoXY(0, 0);
+		system("cls");
+	}
 	fi.read((char*)&Speed, sizeof(int));
 	fi.read((char*)&Alive, sizeof(bool));
 	fi.read((char*)&m, sizeof(int));
@@ -122,6 +134,7 @@ void LoadFile(const char* file, POINT**& X, POINT &Y, POINT Z[], int &Speed, boo
 	fi.close();
 }
 
+// Quá trình lưu file
 void SaveFileProcess(POINT** & Car, POINT& Player, int Speed, bool Alive, POINT CarInEnd[], int& mCarInEnd)
 {
 	char a[100];
@@ -135,6 +148,7 @@ void SaveFileProcess(POINT** & Car, POINT& Player, int Speed, bool Alive, POINT 
 	SaveFile(a, Car, Player, Speed, Alive, CarInEnd, mCarInEnd);	
 }
 
+// Quá trình tải file
 void LoadFileProcess(POINT** & Car, POINT& Player, int Speed, bool Alive, POINT CarInEnd[], int& mCarInEnd)
 {
 	char a[100];

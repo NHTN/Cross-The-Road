@@ -1,4 +1,4 @@
-#pragma comment (lib, "winmm.lib")
+﻿#pragma comment (lib, "winmm.lib") // Thư viện hỗ trợ chèn âm thanh file "*.wav"
 #include <stdio.h>
 #include "Screen.h"
 #include "Windows.h"
@@ -6,16 +6,20 @@
 #include "Hospital.h"
 #include "Player.h"
 #include "Car.h"
-#define MaxCar 17
-#define CarLength 10
+
+#define MaxCar 17 // Số lượng xe
+#define CarLength 10 // Chiều dài xe
+
 using namespace std;
 
+// Khai báo cấu trúc xe cứu thương
 struct Ambulance
 {
 	POINT Am;
 	char Car[3][3];
 };
 
+  // Khởi tạo xe cứu thương
 void InitACar(int x, int y, Ambulance& Z)
 {
 	Z.Am.x = x, Z.Am.y = y;
@@ -25,6 +29,7 @@ void InitACar(int x, int y, Ambulance& Z)
 	Z.Car[0][1] = Z.Car[2][1] = '-';
 }
 
+// Vẽ xe cứu thương
 void DrawAmbulance(int x, int y, Ambulance& Z)
 {
 	gotoXY(x, y);
@@ -38,6 +43,7 @@ void DrawAmbulance(int x, int y, Ambulance& Z)
 	}
 }
 
+// Xóa xe cứu thương
 void EraserAmbulance(int x, int y)
 {
 	gotoXY(x, y);
@@ -51,6 +57,7 @@ void EraserAmbulance(int x, int y)
 	}
 }
 
+// Quá trình cứu thương khi xảy ra tai nạn
 void AccidentProcess(POINT**& Car, POINT& Player, POINT CarInEnd[], int mCarInEnd, Ambulance& Z)
 {
 	Beep(659, 500);
@@ -74,7 +81,7 @@ void AccidentProcess(POINT**& Car, POINT& Player, POINT CarInEnd[], int mCarInEn
 		Z.Am.y--;
 		if (i == Player.y) Z.Car[1][1] = 'Y';
 		DrawAmbulance(Z.Am.x, Z.Am.y, Z);
-		Sleep(100);
+		Sleep(200);
 	}
 	for (int i = Player.y; i <= 19; i++)
 	{
@@ -98,7 +105,7 @@ void AccidentProcess(POINT**& Car, POINT& Player, POINT CarInEnd[], int mCarInEn
 		}
 		DrawAmbulance(Z.Am.x, Z.Am.y, Z);
 		Hospital(Player.x, 19);
-		Sleep(100);
+		Sleep(200);
 	}
 	PlaySound(NULL, 0, 0);
 }

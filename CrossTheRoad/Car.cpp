@@ -1,14 +1,15 @@
-#include <Windows.h>
+﻿#include <Windows.h>
 #include <iostream>
 #include "Screen.h"
-#define MaxCar 17
-#define CarLength 10
-#define WidthConsole 60
-#define HeightConsole 24
 
+#define MaxCar 17 // Số lượng xe
+#define CarLength 10 // Độ dài xe
+#define WidthConsole 60 // Chiều rộng màn hình
+#define HeightConsole 24 // Chiều dài màn hình
 
 using namespace std;
 
+// Vẽ xe 
 void DrawCars(const char s, POINT**& X)
 {
 	for (int i = 4; i < MaxCar; i++)
@@ -21,6 +22,7 @@ void DrawCars(const char s, POINT**& X)
 	}
 }
 
+// Di chuyển xe
 void MoveCar(POINT**& X, int Speed)
 {
 
@@ -56,6 +58,7 @@ void MoveCar(POINT**& X, int Speed)
 	}
 }
 
+// Xóa xe
 void EraserCar(POINT**& X, int Speed)
 {
 	for (int i = 5; i < MaxCar; i += 2)
@@ -77,6 +80,7 @@ void EraserCar(POINT**& X, int Speed)
 	}
 }
 
+// Vẽ người về đích
 void DrawCarInEnd(POINT CarInEnd[], int mCarInEnd)
 {
 	for (int i = 0; i < mCarInEnd; i++)
