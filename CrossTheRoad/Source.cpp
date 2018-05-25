@@ -95,6 +95,7 @@ void Select(HANDLE& AdGameNd)
 	else
 		if (select == 1)
 		{
+			bool kt = true;
 			ResetData(Move, Speed, Player, Car, CarInEnd, mCarInEnd);
 			gotoXY(0, 0);
 			system("cls");
@@ -102,10 +103,22 @@ void Select(HANDLE& AdGameNd)
 			PauseGame(AdGameNd);
 			gotoXY(0, 0);
 			system("cls");
-			LoadFileProcess(Car, Player, Speed, Alive, CarInEnd, mCarInEnd);
-			
-			system("cls");
+			LoadFileProcess(Car, Player, Speed, Alive, CarInEnd, mCarInEnd, kt);
+			while (!kt)
+			{
+				gotoXY(0, 3);
+				cout << "Cannot open this file!";
+				gotoXY(0, 4);
+				cout << "Press [R] to load file again or Another key to play New game !";
+				char T = _getch();
+				if (T == 'R' || T == 'r')
+				{
+					system("cls");
+					LoadFileProcess(Car, Player, Speed, Alive, CarInEnd, mCarInEnd, kt);
+				}
+			}
 			gotoXY(0, 0);
+			system("cls");
 			DrawBoard();
 			ResumeThread(AdGameNd);
 		}
@@ -150,8 +163,25 @@ void main()
 				else
 					if ((temp == 'T') || (temp == 't'))
 					{
+						bool kt = true;
 						PauseGame(AdGameNd);
-						LoadFileProcess(Car, Player, Speed, Alive, CarInEnd, mCarInEnd);
+						LoadFileProcess(Car, Player, Speed, Alive, CarInEnd, mCarInEnd, kt);
+						
+						while (!kt)
+						{
+							gotoXY(3, 3);
+							cout << "Cannot open this file!";
+							gotoXY(3, 4);
+							cout << "Press [R] to load file again or another key to play game continue ";
+							char p = _getch();
+							if (p == 'r' || p == 'R')
+							{
+								LoadFileProcess(Car, Player, Speed, Alive, CarInEnd, mCarInEnd, kt);
+							}
+							else kt = 1;
+						}
+						system("cls");
+						DrawBoard();
 						ResumeThread(AdGameNd);
 					}
 					else

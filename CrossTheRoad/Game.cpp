@@ -101,12 +101,12 @@ void SaveFile(const char* file, POINT** X, POINT& Y, int Speed, bool Alive, POIN
 }
 
 // Load file
-void LoadFile(const char* file, POINT**& X, POINT &Y, POINT Z[], int &Speed, bool& Alive, int& m)
+void LoadFile(const char* file, POINT**& X, POINT &Y, POINT Z[], int &Speed, bool& Alive, int& m, bool& kt)
 {
 	ifstream fi(file, ios::in|ios::binary);
 	if (!fi)
 	{
-		cout << "Cannot open file ";
+		kt = false;
 		return;
 	}
 	else
@@ -132,6 +132,8 @@ void LoadFile(const char* file, POINT**& X, POINT &Y, POINT Z[], int &Speed, boo
 			fi.read((char*)&X[i][j], sizeof(POINT));
 	
 	fi.close();
+	kt = true;
+	return;
 }
 
 // Quá trình lưu file
@@ -149,7 +151,7 @@ void SaveFileProcess(POINT** & Car, POINT& Player, int Speed, bool Alive, POINT 
 }
 
 // Quá trình tải file
-void LoadFileProcess(POINT** & Car, POINT& Player, int Speed, bool Alive, POINT CarInEnd[], int& mCarInEnd)
+void LoadFileProcess(POINT** & Car, POINT& Player, int Speed, bool Alive, POINT CarInEnd[], int& mCarInEnd, bool& kt)
 {
 	char a[100];
 	gotoXY(2, 3);
@@ -172,6 +174,5 @@ void LoadFileProcess(POINT** & Car, POINT& Player, int Speed, bool Alive, POINT 
 			gotoXY(Car[i][j].x, Car[i][j].y);
 			putchar(' ');
 		}
-	LoadFile(a, Car, Player, CarInEnd, Speed, Alive, mCarInEnd);
-
+	LoadFile(a, Car, Player, CarInEnd, Speed, Alive, mCarInEnd, kt);
 }
