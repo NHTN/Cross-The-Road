@@ -116,7 +116,9 @@ void Select(HANDLE& AdGameNd)
 					system("cls");
 					LoadFileProcess(Car, Player, Speed, Alive, CarInEnd, mCarInEnd, kt);
 				}
+				else kt = 1;
 			}
+			system("cls");
 			gotoXY(0, 0);
 			system("cls");
 			DrawBoard();
